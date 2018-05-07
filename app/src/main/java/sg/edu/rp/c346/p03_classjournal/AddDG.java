@@ -41,6 +41,7 @@ public class AddDG extends AppCompatActivity {
                     // Set result to RESULT_OK to indicate normal
                     // response and pass in the intent containing the 		// like
                     setResult(RESULT_OK, i);
+                    finish();
                 }
             }
         });
