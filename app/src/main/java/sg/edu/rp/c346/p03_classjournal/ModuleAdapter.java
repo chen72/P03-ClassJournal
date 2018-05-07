@@ -10,18 +10,17 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+public class ModuleAdapter extends ArrayAdapter {
 
-public class WeekAdapter extends ArrayAdapter {
-
-    private ArrayList<WeekCag> week;
+    private ArrayList<Module> modules;
     private Context context;
-    private TextView tvWeeks,tvCags;
+    private TextView tvCode,tvName;
     private ImageView image;
 
-    public WeekAdapter(Context context, int resource, ArrayList<WeekCag> objects){
+    public ModuleAdapter(Context context, int resource, ArrayList<Module> objects){
         super(context, resource, objects);
         // Store the food that is passed to this adapter
-        week = objects;
+        modules = objects;
         // Store Context object as we would need to use it later
         this.context = context;
     }
@@ -38,29 +37,22 @@ public class WeekAdapter extends ArrayAdapter {
         View rowView = inflater.inflate(R.layout.row, parent, false);
 
         // Get the TextView object
-        tvWeeks = (TextView) rowView.findViewById(R.id.week);
+        tvCode = (TextView) rowView.findViewById(R.id.tvCode);
 
         // Get the TextView object
-        tvCags = (TextView) rowView.findViewById(R.id.cag);
+        tvName = (TextView) rowView.findViewById(R.id.tvName);
 
-        // Get the ImageView object
-        image = (ImageView)rowView.findViewById(R.id.image);
 
-        // The parameter "position" is the index of the
-        //  row ListView is requesting.
-        //  We get back the food at the same index.
-        WeekCag currentWeek = week.get(position);
+
+        Module cuttentModule = modules.get(position);
         // Set the TextView to show the Day
 
-        tvWeeks.setText(currentWeek.getWeek());
-        tvCags.setText(currentWeek.getCAG());
-        image.setImageResource(R.drawable.dg);
+        tvCode.setText(cuttentModule.getmCode());
+        tvName.setText(cuttentModule.getmName());
 
-
-
-        // Return the nicely done up View to the ListView
         return rowView;
     }
+
 
 
 }

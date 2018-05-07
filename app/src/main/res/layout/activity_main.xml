@@ -7,10 +7,10 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
-    <TextView
-        android:id="@+id/textViewC347"
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="C347" />
+        android:layout_height="match_parent"
+        android:id="@+id/LVmodule"></ListView>
+
+
 </LinearLayout>
