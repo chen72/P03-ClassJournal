@@ -44,7 +44,7 @@ public class WeekAdapter extends ArrayAdapter {
         tvCags = (TextView) rowView.findViewById(R.id.cag);
 
         // Get the ImageView object
-        image = (ImageView)rowView.findViewById(R.id.image);
+        image = (ImageView)rowView.findViewById(R.id.imageView);
 
         // The parameter "position" is the index of the
         //  row ListView is requesting.
