@@ -1,6 +1,7 @@
 package sg.edu.rp.c346.p03_classjournal;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,8 @@ public class SecondActivity extends AppCompatActivity {
     ListView lvCAG;
     ArrayList<WeekCag> cag;
     int nextWeek;
+    WeekAdapter weekAdapter;
+    String b;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,18 +40,55 @@ public class SecondActivity extends AppCompatActivity {
         cag.add(new WeekCag("1","B","null"));
         cag.add(new WeekCag("2","C","null"));
         cag.add(new WeekCag("3","A","null"));
-
+        weekAdapter = new WeekAdapter(this, R.layout.row, cag);
+        lvCAG.setAdapter(weekAdapter);
         nextWeek = cag.size() + 1;
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getBaseContext(), SecondActivity.class);
+                Intent intent= new Intent(getBaseContext(), AddDG.class);
                 intent.putExtra("nextWeek", nextWeek);
-                startActivityForResult(intent,0);;
+                startActivityForResult(intent,0);
             }
         });
 
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                // The action you want this intent to do;
+                // ACTION_SEND is used to indicate sending text
+                Intent email = new Intent(Intent.ACTION_SEND);
+                // Put essentials like email address, subject & body text
+                email.putExtra(Intent.EXTRA_EMAIL,
+                        new String[]{"jason_lim@rp.edu.sg"});
+                email.putExtra(Intent.EXTRA_SUBJECT,
+                        "Test Email from C347");
 
+                b = "Hi faci, \n Iam \n Please see my remarks so far, thank you! \n";
+                for (int i = 0; i < cag.size(); i++) {
+                    b = b + "Week " + cag.get(i).getWeek()+": DG: " + cag.get(i).getCAG() + "\n";
+                }
+                email.putExtra(Intent.EXTRA_TEXT,b);
+
+                // This MIME type indicates email
+                email.setType("message/rfc822");
+                // createChooser shows user a list of app that can handle
+                // this MIME type, which is, email
+                startActivity(Intent.createChooser(email,
+                        "Choose an Email client :"));
+            }
+        });
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Intent to display data
+                Intent rpIntent = new Intent(Intent.ACTION_VIEW);
+                // Set the URL to be used.
+                rpIntent.setData(Uri.parse("http://www.rp.edu.sg"));
+                startActivity(rpIntent);
+            }
+        });
 
     }
     @Override
@@ -65,7 +105,8 @@ public class SecondActivity extends AppCompatActivity {
                 // If it is activity started by clicking
                 //  Superman, create corresponding String
                 cag.add(grade);
-
+                nextWeek = cag.size() + 1;
+                weekAdapter.notifyDataSetChanged();
 
                 Toast.makeText(getBaseContext(), grade.getCAG(), Toast.LENGTH_LONG).show();
             }
