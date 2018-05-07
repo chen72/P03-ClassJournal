@@ -18,10 +18,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter aa;
     ArrayList<Module> modules;
 
-    int requestCodeForC302 = 1;
-    int requestCodeForC347 = 2;
-
-
 
 
     @Override

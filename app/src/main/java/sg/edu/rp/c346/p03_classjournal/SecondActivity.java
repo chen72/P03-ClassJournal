@@ -37,9 +37,19 @@ public class SecondActivity extends AppCompatActivity {
                 Toast.LENGTH_LONG).show();
 
         cag = new ArrayList<WeekCag>();
-        cag.add(new WeekCag("1","B","null"));
-        cag.add(new WeekCag("2","C","null"));
-        cag.add(new WeekCag("3","A","null"));
+
+
+        if(option ==1){
+            cag.add(new WeekCag("1","B","null"));
+            cag.add(new WeekCag("2","C","null"));
+            cag.add(new WeekCag("3","A","null"));
+        }
+        else{
+            cag.add(new WeekCag("1","A","null"));
+            cag.add(new WeekCag("2","B","null"));
+            cag.add(new WeekCag("3","C","null"));
+        }
+
         weekAdapter = new WeekAdapter(this, R.layout.row, cag);
         lvCAG.setAdapter(weekAdapter);
         nextWeek = cag.size() + 1;
@@ -85,7 +95,7 @@ public class SecondActivity extends AppCompatActivity {
                 // Intent to display data
                 Intent rpIntent = new Intent(Intent.ACTION_VIEW);
                 // Set the URL to be used.
-                rpIntent.setData(Uri.parse("http://www.rp.edu.sg"));
+                rpIntent.setData(Uri.parse("https://www.rp.edu.sg/SOI/full-time-diplomas/Details/r47"));
                 startActivity(rpIntent);
             }
         });
