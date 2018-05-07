@@ -4,11 +4,19 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView c347;
+    ListView lvModule;
+    ArrayAdapter aa;
+    ArrayList<Module> modules;
 
 
     @Override
@@ -16,21 +24,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        c347 = (TextView)findViewById(R.id.textViewC347);
+        lvModule = (ListView)findViewById(R.id.LVmodule);
 
+        modules = new ArrayList<Module>();
 
+        modules.add(new Module("C302", "Web Services"));
+        modules.add(new Module("C347", "Android 2"));
 
-        // Set listener to handle the clicking of Superman TextView
-        c347.setOnClickListener(new View.OnClickListener(){
+        lvModule.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View arg0) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(MainActivity.this,
+                        SecondActivity.class);
+                // Put hero object in intent
+                i.putExtra("module", position);
+                startActivity(i);
+                
+
+            }
+        });
 
 
+        aa = new ModuleAdapter(this, R.layout.module_row, modules);
+        lvModule.setAdapter(aa);
 
 
-
-
-            }});
 
 
 

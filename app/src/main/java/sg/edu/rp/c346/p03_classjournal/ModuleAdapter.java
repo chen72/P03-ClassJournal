@@ -34,7 +34,7 @@ public class ModuleAdapter extends ArrayAdapter {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // "Inflate" the row.xml as the layout for the View object
-        View rowView = inflater.inflate(R.layout.row, parent, false);
+        View rowView = inflater.inflate(R.layout.module_row, parent, false);
 
         // Get the TextView object
         tvCode = (TextView) rowView.findViewById(R.id.tvCode);
@@ -44,11 +44,11 @@ public class ModuleAdapter extends ArrayAdapter {
 
 
 
-        Module cuttentModule = modules.get(position);
+        Module currentModule = modules.get(position);
         // Set the TextView to show the Day
 
-        tvCode.setText(cuttentModule.getmCode());
-        tvName.setText(cuttentModule.getmName());
+        tvCode.setText(currentModule.getmCode());
+        tvName.setText(currentModule.getmName());
 
         return rowView;
     }
