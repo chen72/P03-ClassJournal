@@ -1,6 +1,8 @@
 package sg.edu.rp.c346.p03_classjournal;
 
-public class WeekCag {
+import java.io.Serializable;
+
+public class WeekCag implements Serializable {
 
     private String week;
     private String CAG;
