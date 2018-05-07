@@ -17,6 +17,7 @@ public class SecondActivity extends AppCompatActivity {
     ArrayList<WeekCag> cag;
     int nextWeek;
     WeekAdapter weekAdapter;
+    String a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,33 @@ public class SecondActivity extends AppCompatActivity {
                 Intent intent= new Intent(getBaseContext(), AddDG.class);
                 intent.putExtra("nextWeek", nextWeek);
                 startActivityForResult(intent,0);
+            }
+        });
+
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                // The action you want this intent to do;
+                // ACTION_SEND is used to indicate sending text
+                Intent email = new Intent(Intent.ACTION_SEND);
+                // Put essentials like email address, subject & body text
+                email.putExtra(Intent.EXTRA_EMAIL,
+                        new String[]{"jason_lim@rp.edu.sg"});
+                email.putExtra(Intent.EXTRA_SUBJECT,
+                        "Test Email from C347");
+
+                a = "Hi faci, \n Iam \n Please see my remarks so far, thank you! \n";
+                for (int i = 0; i < cag.size(); i++) {
+                    a = a + "Week " + cag.get(i).getWeek()+": DG: " + cag.get(i).getCAG() + "\n";
+                }
+                email.putExtra(Intent.EXTRA_TEXT,a);
+
+                // This MIME type indicates email
+                email.setType("message/rfc822");
+                // createChooser shows user a list of app that can handle
+                // this MIME type, which is, email
+                startActivity(Intent.createChooser(email,
+                        "Choose an Email client :"));
             }
         });
 
