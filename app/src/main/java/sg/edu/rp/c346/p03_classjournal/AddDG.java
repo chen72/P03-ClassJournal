@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,19 @@ public class AddDG extends AppCompatActivity {
                 }
             }
         });
+
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int selectedButton = radioGroup.getCheckedRadioButtonId();
+
+                RadioButton rb = (RadioButton)findViewById(selectedButton);
+                Toast.makeText(AddDG.this, rb.getText(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
     }
