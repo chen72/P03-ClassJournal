@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -20,6 +21,9 @@ public class SecondActivity extends AppCompatActivity {
         Intent i = getIntent();
         // Get the Hero object first activity put in Intent
         int option = i.getIntExtra("module",0);
+
+        Toast.makeText(SecondActivity.this, option+"",
+                Toast.LENGTH_LONG).show();
 
 
 
