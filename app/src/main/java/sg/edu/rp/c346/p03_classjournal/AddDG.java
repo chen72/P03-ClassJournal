@@ -28,6 +28,7 @@ public class AddDG extends AppCompatActivity {
         btnSubmit = findViewById(R.id.submitBtn);
         Intent intentGet = getIntent();
         nextWeek = intentGet.getIntExtra("nextWeek",-1);
+        tvWeek.setText("Week " + nextWeek);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
