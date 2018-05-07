@@ -27,7 +27,7 @@ public class EmailActivity extends AppCompatActivity {
                 email.putExtra(Intent.EXTRA_EMAIL,
                         new String[]{"jason_lim@rp.edu.sg"});
                 email.putExtra(Intent.EXTRA_SUBJECT,
-                        "Test Email from C347");
+                        "");
                 email.putExtra(Intent.EXTRA_TEXT,
                         editTextMessage.getText());
                 // This MIME type indicates email

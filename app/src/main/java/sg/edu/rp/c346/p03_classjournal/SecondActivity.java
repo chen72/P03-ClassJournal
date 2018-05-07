@@ -14,6 +14,7 @@ public class SecondActivity extends AppCompatActivity {
     ListView lvCAG;
     ArrayList<WeekCag> cag;
     int nextWeek;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,7 @@ public class SecondActivity extends AppCompatActivity {
         lvCAG = (ListView)findViewById(R.id.LVcag);
         // Get the intent
         Intent i = getIntent();
-        // Get the Hero object first activity put in Intent
+        // Get the module object first activity put in Intent
         int option = i.getIntExtra("module",-1);
 
         Toast.makeText(SecondActivity.this, option+"",
