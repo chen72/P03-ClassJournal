@@ -18,6 +18,11 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter aa;
     ArrayList<Module> modules;
 
+    int requestCodeForC302 = 1;
+    int requestCodeForC347 = 2;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +39,13 @@ public class MainActivity extends AppCompatActivity {
         lvModule.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(MainActivity.this,
-                        SecondActivity.class);
-                // Put hero object in intent
-                i.putExtra("module", position);
-                startActivity(i);
-                
+
+
+                    Intent i = new Intent(MainActivity.this,
+                            SecondActivity.class);
+                    // Put hero object in intent
+                    i.putExtra("module", position);
+                    startActivity(i);
 
             }
         });
@@ -47,10 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         aa = new ModuleAdapter(this, R.layout.module_row, modules);
         lvModule.setAdapter(aa);
-
-
-
-
 
 
 
