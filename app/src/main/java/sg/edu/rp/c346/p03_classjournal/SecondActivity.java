@@ -34,7 +34,7 @@ public class SecondActivity extends AppCompatActivity {
         cag.add(new WeekCag("3","A","null"));
 
         nextWeek = cag.size() + 1;
-
+ 
 
 
 
