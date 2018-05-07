@@ -16,6 +16,7 @@ public class SecondActivity extends AppCompatActivity {
     ListView lvCAG;
     ArrayList<WeekCag> cag;
     int nextWeek;
+    WeekAdapter weekAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,14 +38,15 @@ public class SecondActivity extends AppCompatActivity {
         cag.add(new WeekCag("1","B","null"));
         cag.add(new WeekCag("2","C","null"));
         cag.add(new WeekCag("3","A","null"));
-
+        weekAdapter = new WeekAdapter(this, R.layout.row, cag);
+        lvCAG.setAdapter(weekAdapter);
         nextWeek = cag.size() + 1;
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getBaseContext(), SecondActivity.class);
+                Intent intent= new Intent(getBaseContext(), AddDG.class);
                 intent.putExtra("nextWeek", nextWeek);
-                startActivityForResult(intent,0);;
+                startActivityForResult(intent,0);
             }
         });
 
@@ -65,7 +67,8 @@ public class SecondActivity extends AppCompatActivity {
                 // If it is activity started by clicking
                 //  Superman, create corresponding String
                 cag.add(grade);
-
+                nextWeek = cag.size() + 1;
+                weekAdapter.notifyDataSetChanged();
 
                 Toast.makeText(getBaseContext(), grade.getCAG(), Toast.LENGTH_LONG).show();
             }

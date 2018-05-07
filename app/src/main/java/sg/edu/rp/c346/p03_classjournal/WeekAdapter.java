@@ -52,7 +52,7 @@ public class WeekAdapter extends ArrayAdapter {
         WeekCag currentWeek = week.get(position);
         // Set the TextView to show the Day
 
-        tvWeeks.setText(currentWeek.getWeek());
+        tvWeeks.setText("Week "+currentWeek.getWeek());
         tvCags.setText(currentWeek.getCAG());
         image.setImageResource(R.drawable.dg);
 
