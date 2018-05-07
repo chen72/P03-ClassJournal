@@ -17,7 +17,7 @@ public class SecondActivity extends AppCompatActivity {
     ArrayList<WeekCag> cag;
     int nextWeek;
     WeekAdapter weekAdapter;
-    String a;
+    String b;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,11 +63,11 @@ public class SecondActivity extends AppCompatActivity {
                 email.putExtra(Intent.EXTRA_SUBJECT,
                         "Test Email from C347");
 
-                a = "Hi faci, \n Iam \n Please see my remarks so far, thank you! \n";
+                b = "Hi faci, \n Iam \n Please see my remarks so far, thank you! \n";
                 for (int i = 0; i < cag.size(); i++) {
-                    a = a + "Week " + cag.get(i).getWeek()+": DG: " + cag.get(i).getCAG() + "\n";
+                    b = b + "Week " + cag.get(i).getWeek()+": DG: " + cag.get(i).getCAG() + "\n";
                 }
-                email.putExtra(Intent.EXTRA_TEXT,a);
+                email.putExtra(Intent.EXTRA_TEXT,b);
 
                 // This MIME type indicates email
                 email.setType("message/rfc822");
